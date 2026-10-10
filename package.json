@@ -10,7 +10,7 @@
   "scripts": {
     "dev:web": "pnpm --filter @noteflow/web dev",
     "dev:desktop": "pnpm --filter @noteflow/desktop tauri dev",
-    "build": "pnpm -r build",
+    "build": "pnpm --filter @noteflow/web build && pnpm --filter @noteflow/shared build",
     "build:web": "pnpm --filter @noteflow/web build",
     "build:desktop": "pnpm --filter @noteflow/desktop tauri build",
     "typecheck": "pnpm -r typecheck",
