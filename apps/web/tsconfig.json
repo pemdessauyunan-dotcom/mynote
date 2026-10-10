@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
+    "types": ["vite/client", "vite-plugin-pwa/client", "node", "@testing-library/jest-dom"],
+    "noEmit": true
+  },
+  "include": ["src", "vite.config.ts", "tailwind.config.ts"]
+}

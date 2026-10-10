@@ -1,0 +1,145 @@
+/* =============================================================
+ * NoteFlow design tokens
+ * Premium, dark-first theme with restrained indigo accent and
+ * tiered charcoal/slate surfaces. Light mode overrides follow.
+ * Respect prefers-reduced-motion globally.
+ * ============================================================= */
+
+:root {
+  color-scheme: dark;
+
+  /* Base surfaces (tiered depth) */
+  --nf-bg:            #0d1017;   /* deepest, behind everything */
+  --nf-surface-1:     #12161f;   /* app shell / sidebar */
+  --nf-surface-2:     #171c26;   /* cards / panels */
+  --nf-surface-3:     #1e2431;   /* raised / hover */
+  --nf-surface-input: #10141c;
+
+  /* Text */
+  --nf-text:         #e7ebf3;
+  --nf-text-muted:   #9aa4b5;
+  --nf-text-subtle:  #6b7688;
+  --nf-text-inv:     #0d1017;
+
+  /* Indigo / electric-blue accent, used sparingly */
+  --nf-accent:       #6366f1;
+  --nf-accent-strong:#818cf8;
+  --nf-accent-soft:  rgba(99, 102, 241, 0.14);
+  --nf-accent-ring:  rgba(129, 140, 248, 0.55);
+
+  /* Semantic */
+  --nf-success: #34d399;
+  --nf-warning: #fbbf24;
+  --nf-danger:  #f87171;
+  --nf-info:    #7dd3fc;
+
+  /* Lines / shadows */
+  --nf-border:        rgba(255, 255, 255, 0.07);
+  --nf-border-strong: rgba(255, 255, 255, 0.13);
+  --nf-shadow-sm: 0 1px 2px rgba(0,0,0,0.35);
+  --nf-shadow-md: 0 6px 20px -6px rgba(0,0,0,0.55);
+  --nf-shadow-lg: 0 18px 50px -12px rgba(0,0,0,0.7);
+
+  /* Radius scale */
+  --nf-r-sm: 8px;
+  --nf-r-md: 12px;
+  --nf-r-lg: 16px;
+  --nf-r-xl: 22px;
+
+  /* Motion */
+  --nf-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --nf-dur-fast: 120ms;
+  --nf-dur: 220ms;
+  --nf-dur-slow: 360ms;
+
+  /* Spacing rhythm */
+  --nf-gap: 16px;
+  --nf-pad: 20px;
+}
+
+/* Light mode: applied when <html data-theme="light"> */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --nf-bg:            #f4f6fb;
+  --nf-surface-1:     #ffffff;
+  --nf-surface-2:     #ffffff;
+  --nf-surface-3:     #eef1f7;
+  --nf-surface-input: #f7f9fc;
+
+  --nf-text:        #1a2233;
+  --nf-text-muted:  #55607a;
+  --nf-text-subtle: #8a93a8;
+  --nf-text-inv:    #ffffff;
+
+  --nf-accent:      #4f46e5;
+  --nf-accent-strong:#4338ca;
+  --nf-accent-soft: rgba(79, 70, 229, 0.10);
+  --nf-accent-ring: rgba(79, 70, 229, 0.40);
+
+  --nf-border:        rgba(15, 23, 42, 0.09);
+  --nf-border-strong: rgba(15, 23, 42, 0.16);
+  --nf-shadow-sm: 0 1px 2px rgba(16,24,40,0.08);
+  --nf-shadow-md: 0 8px 24px -8px rgba(16,24,40,0.18);
+  --nf-shadow-lg: 0 20px 48px -16px rgba(16,24,40,0.24);
+}
+
+/* Reduced motion: kill transitions/animations globally. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] *::before,
+[data-reduced-motion="true"] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* Focus ring utility for keyboard navigation + a11y */
+.nf-focusable:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--nf-bg), 0 0 0 4px var(--nf-accent-ring);
+}
+
+/* Pastel note-card surfaces (dark). Light-mode variants below. */
+.nf-card[data-color="slate"]   { --card: #2a2f3a; --card-hover:#333947; --card-border:#3b4252; --card-accent:#94a3b8; }
+.nf-card[data-color="rose"]    { --card: #3a2731; --card-hover:#46303a; --card-border:#583846; --card-accent:#fda4af; }
+.nf-card[data-color="amber"]   { --card: #3a3125; --card-hover:#463b2c; --card-border:#5a4a33; --card-accent:#fbbf24; }
+.nf-card[data-color="emerald"] { --card: #24382f; --card-hover:#2f4639; --card-border:#365545; --card-accent:#6ee7b7; }
+.nf-card[data-color="sky"]     { --card: #233745; --card-hover:#2a4152; --card-border:#315064; --card-accent:#7dd3fc; }
+.nf-card[data-color="violet"]  { --card: #312943; --card-hover:#3a3051; --card-border:#463b60; --card-accent:#c4b5fd; }
+.nf-card[data-color="indigo"]  { --card: #272c4b; --card-hover:#2f3559; --card-border:#384071; --card-accent:#a5b4fc; }
+
+[data-theme="light"] .nf-card[data-color="slate"]   { --card:#eef1f6; --card-hover:#e5e9f1; --card-border:#d5dbe7; --card-accent:#475569; }
+[data-theme="light"] .nf-card[data-color="rose"]    { --card:#fdeef2; --card-hover:#fbe2e8; --card-border:#f6d2dc; --card-accent:#be123c; }
+[data-theme="light"] .nf-card[data-color="amber"]   { --card:#fdf3e3; --card-hover:#f9ead0; --card-border:#f2dcb4; --card-accent:#b45309; }
+[data-theme="light"] .nf-card[data-color="emerald"] { --card:#e6f6ef; --card-hover:#d6efe4; --card-border:#bfe3d2; --card-accent:#047857; }
+[data-theme="light"] .nf-card[data-color="sky"]     { --card:#e6f2fb; --card-hover:#d6ebf8; --card-border:#bfe0f2; --card-accent:#0369a1; }
+[data-theme="light"] .nf-card[data-color="violet"]  { --card:#efeafc; --card-hover:#e4dcf8; --card-border:#d6c9f2; --card-accent:#6d28d9; }
+[data-theme="light"] .nf-card[data-color="indigo"]  { --card:#e9ebfb; --card-hover:#dfe2f8; --card-border:#cdd2f2; --card-accent:#4338ca; }
+
+.nf-card {
+  background: var(--card, var(--nf-surface-2));
+  border: 1px solid var(--card-border, var(--nf-border));
+  transition: background var(--nf-dur) var(--nf-ease),
+              transform var(--nf-dur) var(--nf-ease),
+              box-shadow var(--nf-dur) var(--nf-ease);
+}
+.nf-card:hover { background: var(--card-hover, var(--nf-surface-3)); }
+
+/* Skeleton shimmer */
+.nf-skeleton {
+  background: linear-gradient(90deg, var(--nf-surface-2), var(--nf-surface-3), var(--nf-surface-2));
+  background-size: 200% 100%;
+  animation: nf-shimmer 1.4s var(--nf-ease) infinite;
+  border-radius: var(--nf-r-sm);
+}
+@keyframes nf-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

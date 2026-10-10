@@ -1,0 +1,39 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# build outputs
+dist/
+dist-ssr/
+build/
+target/
+*.tsbuildinfo
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+apps/desktop/src-tauri/.env
+
+# editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# test artifacts
+coverage/
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+
+# supabase local
+supabase/.branches/
+supabase/.temp/
